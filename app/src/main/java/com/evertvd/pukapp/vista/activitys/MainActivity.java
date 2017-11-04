@@ -11,18 +11,35 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.evertvd.pukapp.R;
+import com.evertvd.pukapp.controller.controllerApi;
 import com.evertvd.pukapp.vista.fragments.main.Clientes;
 import com.evertvd.pukapp.vista.fragments.main.ContainerCompras;
 import com.evertvd.pukapp.vista.fragments.main.ContainerVentas;
 import com.evertvd.pukapp.vista.fragments.main.Proveedores;
+import com.evertvd.pukapp.interfaces.ClienteService;
+import com.evertvd.pukapp.modelo.Cliente;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private  final String baseUrl="http://128.1.20.38/";
+    List<Cliente> clienteList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +118,39 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_main, new Proveedores());
             ft.commit();
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_share) {
+             controllerApi controllerApi=new controllerApi();
+            controllerApi.start();
+
+            /*
+            Retrofit retrofit  = new Retrofit.Builder()
+                    .baseUrl(baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            ClienteService clienteService=retrofit.create(ClienteService.class);
+            final Call<List<Cliente>> lista = clienteService.getCliente();
+            lista.enqueue(new Callback<List<Cliente>>() {
+                @Override
+                public void onResponse(Call<List<Cliente>> call, Response<List<Cliente>> response) {
+                    if(response.isSuccessful()){
+                    clienteList=response.body();
+                        //Log.e("TAG",String.valueOf(clienteList.size()));
+                        for (int i=0;i<clienteList.size();i++){
+                            Log.e("Cliente",clienteList.get(i).getDireccion());
+                        }
+                }
+                }
+
+                @Override
+                public void onFailure(Call<List<Cliente>> call, Throwable t) {
+                    Log.e("TAG",String.valueOf("error"));
+                }
+            });
+            */
+
+            } else if (id == R.id.nav_send) {
             startActivity(new Intent(this, LoginActivity.class));
         }
 

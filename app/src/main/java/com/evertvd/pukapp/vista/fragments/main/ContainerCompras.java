@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.evertvd.pukapp.R;
 import com.evertvd.pukapp.vista.adapters.AdapterViewPagerCompras;
-import com.evertvd.pukapp.vista.adapters.AdapterViewPagerVentas;
 
 /**
  * A simple {@link Fragment} subclass.
