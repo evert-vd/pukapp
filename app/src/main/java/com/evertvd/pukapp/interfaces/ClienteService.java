@@ -5,6 +5,7 @@ import com.evertvd.pukapp.modelo.Cliente;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.GET;
 
 
@@ -17,5 +18,6 @@ public interface ClienteService {
     //Call<List<Cliente>> getCliente ;
     @GET("api/clientes")
     Call<List<Cliente>> getCliente();
+    //void getClientes(Callback<List<Cliente>> callback);
 
 }

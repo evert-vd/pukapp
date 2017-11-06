@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.evertvd.pukapp.R;
 import com.evertvd.pukapp.controller.controllerApi;
@@ -38,7 +39,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private  final String baseUrl="http://128.1.20.38/";
+    //private  final String baseUrl="https://10.0.2.2:8080/";
     List<Cliente> clienteList=new ArrayList<>();
 
     @Override
@@ -120,9 +121,8 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_share) {
-             controllerApi controllerApi=new controllerApi();
-            controllerApi.start();
 
+            Toast.makeText(this,"ckick en parametos",Toast.LENGTH_SHORT).show();
             /*
             Retrofit retrofit  = new Retrofit.Builder()
                     .baseUrl(baseUrl)
